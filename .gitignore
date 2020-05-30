@@ -139,3 +139,7 @@ cython_debug/
 
 #VSCode settings
 settings.json
+
+#db migrations
+migrations/
+app.db
