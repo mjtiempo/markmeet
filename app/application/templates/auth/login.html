@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+          <form action="" class="box">
+            <div class="field">
+              <label for="" class="label">Email</label>
+              <div class="control has-icons-left">
+                {{ form.username(size=32, class_="input", type_="email", placeholder="Username") }}
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Password</label>
+              <div class="control has-icons-left">
+                {{ form.password(size=32, class_="input", type_="password", placeholder="Password") }}
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="checkbox">
+                {{ form.remember_me() }} {{ form.remember_me.label }}
+              </label>
+            </div>
+            <div class="field">
+              {{ form.submit(class_="button is-success") }}
+            </div>
+          </form>
+        </div>
+      </div>
+    
+{% endblock %}

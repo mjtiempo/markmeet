@@ -19,10 +19,11 @@ def create_app():
         #include routes
         #from . import routes
         from .home import home
+        from .auth import auth
 
         #register blueprints
-        #app.register_blueprint(auth.auth_bp)
         #app.register_blueprint(admin.admin_bp)
         app.register_blueprint(home.home_bp)
+        app.register_blueprint(auth.auth_bp)
 
         return app
