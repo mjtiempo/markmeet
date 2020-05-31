@@ -1,7 +1,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url_for('home.index') }}">
-                <img src="{{ url_for('static', filename='dist/logo.png') }}" width="112" height="28">
+                <img src="{{ url_for('static', filename='logo.png') }}" width="112" height="28">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -47,7 +47,7 @@
                 <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                    <a class="button is-primary">
+                    <a href="{{ url_for('auth.signup') }}"  class="button is-primary">
                         <strong>Sign up</strong>
                     </a>
                     <a href="{{ url_for('auth.login') }}" class="button is-light">
