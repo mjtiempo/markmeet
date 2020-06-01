@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from flask_login import UserMixin
 from . import db
 
@@ -11,3 +11,13 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return '<User {} {}>'.format(self.first_name, self.last_name) 
+
+
+class Qrcode(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<base64 {}>'.format(self.body)

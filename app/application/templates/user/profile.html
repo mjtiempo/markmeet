@@ -2,8 +2,15 @@
 
 {% block content %}
 <div class="columns is-centered">
-    <p>
-        <h1>Hello, {{ name }}</h1>
-    </p>
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+        <div class="field">
+            <h1>Hello, {{ name }}<br></h1>
+        </div>
+        <div class="field">
+            <figure class="image is-128x128">
+            <img  src="{{ qr }}" alt="QR Code {{ name }}" />
+        </figure>
+        </div>
+    <div/>
 </div>
 {% endblock content %}

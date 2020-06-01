@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask import current_app as app
 from flask_login import login_required, current_user
-from ..models import User
+from ..models import User, Qrcode
 from .. import login_manager
 
 
@@ -19,5 +19,8 @@ user_bp = Blueprint('user', __name__)
 def profile():
     #user index
     user = load_user(current_user.get_id())
+    qrcode = Qrcode.query.filter_by(user_id=current_user.get_id()).first()
     name = "{} {}".format(user.first_name, user.last_name)
-    return render_template('user/profile.html', title="Profile", name=name)
+    qrcode_img = qrcode.body
+    
+    return render_template('user/profile.html', title="Profile", name=name, qr=qrcode_img)
