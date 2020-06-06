@@ -1,0 +1,16 @@
+SECRET_KEY="\2\1thisismyscretkey\1\2\e\y\y\h"
+
+CSRF_ENABLED=True
+
+APP_NAME="Flask JWT Auth Server"
+
+AUTH_TYPE=AUTH_DB
+
+SQLALCHEMY_TRACK_MODIFICATIONS=True
+
+FLASK_DEBUG=1
+
+
+JWT_APP_ID=app_id
+JWT_APP_KEY=app_secret
+JITSI_DOMAIN=domain
