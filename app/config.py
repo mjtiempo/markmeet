@@ -9,5 +9,5 @@ sqldb = "sqlite:///" + os.path.join(basedir, "app.db")
 
 class Config():
     SECRET_KEY = os.getenv("SECRET_KEY") #or"\2\1thisismyscretkey\1\2\e\y\y\h"
-    SQLALCHEMY_DATABASE_URI = sqldb
+    SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI") or sqldb
     SQLALCHEMY_TRACK_MODIFICATIONS=os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS")

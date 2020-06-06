@@ -8,6 +8,8 @@ AUTH_TYPE=AUTH_DB
 
 SQLALCHEMY_TRACK_MODIFICATIONS=True
 
+#SQLALCHEMY_DATABASE_URI=mysql://username:password@server/db
+
 FLASK_DEBUG=1
 
 
