@@ -1,6 +1,3 @@
-import qrcode
-from base64 import b64encode
-from io import BytesIO
 from datetime import datetime
 
 from flask import Blueprint, render_template, request, flash, redirect, url_for
@@ -11,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from ..forms import LoginForm, SignUpForm
 from ..models import User, Qrcode
 from .. import db
+from ..utils import create_qrcode_str
 
 #Configure Blueprint
 auth_bp = Blueprint('auth', __name__)
@@ -58,8 +56,11 @@ def signup_post():
         return redirect(url_for('auth.signup'))
 
     # create new user with the form data. Hash the password so plaintext version isn't saved.
-    new_user = User(email=email, first_name=first_name, last_name=last_name, password_hash=generate_password_hash(password, method='sha256'))
-    
+    new_user = User(email=email, 
+                    first_name=first_name, 
+                    last_name=last_name, 
+                    password_hash=generate_password_hash(password, method='sha256')
+                    )
 
     # add the new user to the database
     db.session.add(new_user)
@@ -69,12 +70,8 @@ def signup_post():
     user = User.query.filter_by(email=email).first()
     qrcode_data = '{} {} {} registered {}'.format(user.first_name, user.last_name, user.email, str(datetime.utcnow()))
 
-    img = qrcode.make(qrcode_data)
-    buffered = BytesIO()
-    img.save(buffered, format="PNG")
-    img_str = b64encode(buffered.getvalue())
-    img_base64 = bytes("data:image/png;base64,", encoding='utf-8') + img_str
-    new_qrcode = Qrcode(user_id=user.id, body=img_base64.decode())
+    qrcode_str = create_qrcode_str(qrcode_data)
+    new_qrcode = Qrcode(user_id=user.id, body=qrcode_str)
     db.session.add(new_qrcode)
     db.session.commit()
 

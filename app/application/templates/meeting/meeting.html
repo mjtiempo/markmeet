@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block fullbody %}
+<section id="fullbody" class="hero is-primary is-fullheight">
+</section>
+{% endblock fullbody %}
+
+{% block meetjs %}
+<script src="https://{{ domain }}/external_api.js"></script>
+        <script>
+        
+        var domain = "{{ domain }}";
+            var options = {
+		roomName: "{{ roomname }}",
+        {% if jwt %}
+		jwt: "{{ jwt }}", 
+        {% endif %}
+                width: "100%",
+                height: "60em",
+                parentNode: document.querySelector('#fullbody')
+            }
+            var api = new JitsiMeetExternalAPI(domain, options);
+        </script>
+{% endblock meetjs %}

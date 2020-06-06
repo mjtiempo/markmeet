@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+            <div class="box">
+                <div class="field has-text-centered">
+                    <h1>{{ name }}</h1>
+                </div>
+            </div>
+            {% if current_user.is_authenticated %}
+                <form action="{{ url_for('meeting.start_meeting') }}" method="post" class="box">
+            {% else %}
+                <form action="{{ url_for('meeting.guest_meeting') }}" method="post" class="box">
+            {% endif %}
+            <div class="field">
+              <label for="" class="label">Room Name</label>
+              <div class="control has-icons-left">
+                <input class="input" id="roomname" name="roomname" placeholder="MarkMeet" required size="32" type="text" type_="text" value="">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-laptop"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+            {% if current_user.is_authenticated %}
+                <input class="button is-success" id="submit" name="submit" type="submit" value="Start Meeting">
+            {% else %}
+                <input class="button is-success" id="submit" name="submit" type="submit" value="Join Meeting">
+            {% endif %}
+              
+            </div>
+          </form>
+        </div>
+      </div>
+{% endblock content %}

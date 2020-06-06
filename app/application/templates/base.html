@@ -17,18 +17,40 @@
 <header class="hero-head">
             {% include 'inc/nav.html' %}
 </header>
+
+    {% block fullbody %}
+    
     <section class="hero is-primary is-fullheight">
 
         
 
         <div class="hero-body">
             <div class="container">
-               {% block content %}
-               {% endblock %}
+                {% block flask_msgs %}
+                
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <div class="column is-4 is-offset-4">
+                                <div class="box">
+                                    <div class="notification is-danger has-text-centered">
+                                        {{ messages[0] }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endwith %}    
+                
+                {% endblock flask_msgs %}
+
+            {% block content %}
+            {% endblock content %}
             </div>
         </div>
     </section>
+    {% endblock fullbody %}
 
+    {% block meetjs %}
+    {% endblock meetjs %}
     <script src="{{ url_for('static', filename="fa-free/js/all.min.js") }}"></script>
     <script src="{{ url_for('static', filename="bulma/js/bulma.js") }}"></script>
 </body>

@@ -25,11 +25,13 @@ def create_app():
         from .home import home
         from .auth import auth
         from .user import user
+        from .meeting import meeting
 
         #register blueprints
         #app.register_blueprint(admin.admin_bp)
         app.register_blueprint(home.home_bp)
         app.register_blueprint(auth.auth_bp)
         app.register_blueprint(user.user_bp)
+        app.register_blueprint(meeting.meeting_bp)
 
         return app
