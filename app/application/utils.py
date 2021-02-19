@@ -26,4 +26,5 @@ def generate_token(name, email, room, appid, appkey, domain, audience, avatar=No
             "sub": domain,	
             "room": room
         }
-    return jwt.encode(payload, appkey, algorithm='HS256').decode()
+    #return jwt.encode(payload, appkey, algorithm='HS256').decode()
+    return jwt.encode(payload, appkey, algorithm='HS256')
