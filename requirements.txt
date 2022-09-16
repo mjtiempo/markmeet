@@ -10,7 +10,7 @@ Flask-SQLAlchemy==2.4.4
 Flask-WTF==0.14.3
 itsdangerous==1.1.0
 Jinja2==2.11.3
-Mako==1.1.4
+Mako==1.2.2
 MarkupSafe==1.1.1
 Pillow==8.1.0
 pkg-resources==0.0.0
